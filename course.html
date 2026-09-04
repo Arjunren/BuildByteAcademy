@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses & Bundles - BuildByte Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0ea5e9',
+                        primaryHover: '#0284c7',
+                        bgWhite: '#ffffff',
+                        textMain: '#111827',
+                        textMuted: '#4b5563',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
+        /* Smooth transition for hiding/showing cards */
+        .course-card { transition: opacity 0.3s ease, transform 0.3s ease; }
+    </style>
+</head>
+<body class="text-textMain antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
+
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="relative bg-white z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    <span class="font-bold text-xl tracking-tight">BuildByte Academy</span>
+                </a>
+
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-textMuted hover:text-primary font-medium transition-colors">Home</a>
+                    <a href="#" class="text-primary font-medium transition-colors">Course</a>
+                    <a href="certificate.html" class="text-textMuted hover:text-primary font-medium transition-colors">Certificate</a>
+                    <a href="contact.html" class="text-textMuted hover:text-primary font-medium transition-colors">Contact Us</a>
+                </div>
+
+                <div class="hidden md:flex items-center">
+                    <a href="#" class="bg-primary hover:bg-primaryHover text-white px-6 py-2.5 rounded-full font-medium transition-colors shadow-sm shadow-blue-200">
+                        Get Started
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 text-textMain focus:outline-none group">
+                        <span id="line-1" class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-in-out origin-center"></span>
+                        <span id="line-2" class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-in-out"></span>
+                        <span id="line-3" class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-in-out origin-center"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-lg transform -translate-y-4 opacity-0 pointer-events-none transition-all duration-300 ease-in-out z-10">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-textMuted hover:text-primary hover:bg-gray-50 transition-colors">Home</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-blue-50 transition-colors">Course</a>
+                <a href="certificate.html" class="block px-3 py-2 rounded-md text-base font-medium text-textMuted hover:text-primary hover:bg-gray-50 transition-colors">Certificate</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-textMuted hover:text-primary hover:bg-gray-50 transition-colors">Contact Us</a>
+                <a href="#" class="block px-3 py-3 mt-6 text-center rounded-md text-base font-medium bg-primary text-white hover:bg-primaryHover transition-colors">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow bg-gray-50/30 py-16 lg:py-24 relative overflow-hidden">
+        
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-blue-50/80 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="inline-block text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100 mb-6">
+                    Course Catalog
+                </span>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-textMain mb-6 tracking-tight">Explore the Curriculum</h1>
+                <p class="text-lg text-textMuted leading-relaxed">
+                    Enroll in comprehensive career bundles or pick specific language tracks to build your custom tech stack.
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto mb-16 space-y-6">
+                <div class="relative w-full max-w-lg mx-auto">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <input type="text" id="courseSearch" class="block w-full pl-12 pr-4 py-3.5 bg-white border border-gray-200 rounded-full text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all shadow-sm" placeholder="Search courses (e.g., Python, Figma, React)...">
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button class="filter-btn active bg-primary text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm" data-filter="all">All Courses</button>
+                    <button class="filter-btn bg-white border border-gray-200 text-textMuted hover:border-primary/50 hover:text-primary px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm" data-filter="bundle">Bundles</button>
+                    <button class="filter-btn bg-white border border-gray-200 text-textMuted hover:border-primary/50 hover:text-primary px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm" data-filter="front-end">Front-End</button>
+                    <button class="filter-btn bg-white border border-gray-200 text-textMuted hover:border-primary/50 hover:text-primary px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm" data-filter="back-end">Back-End</button>
+                    <button class="filter-btn bg-white border border-gray-200 text-textMuted hover:border-primary/50 hover:text-primary px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm" data-filter="design">UI/UX Design</button>
+                    <button class="filter-btn bg-white border border-gray-200 text-textMuted hover:border-primary/50 hover:text-primary px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm" data-filter="cybersecurity">Cybersecurity</button>
+                    <button class="filter-btn bg-white border border-gray-200 text-textMuted hover:border-primary/50 hover:text-primary px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm" data-filter="ai">AI & Automation</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="courseGrid">
+                
+                <div class="course-card flex flex-col bg-white border-2 border-primary/30 rounded-[2rem] p-8 h-full shadow-[0_8px_30px_rgb(14,165,233,0.08)] hover:-translate-y-1.5 transition-all duration-300 relative group overflow-hidden" data-category="bundle front-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-blue-50 text-primary border border-blue-100 px-3 py-1 rounded-full">Full Bundle</span>
+                    <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 11h16M9 4v16"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Front-End Mastery Track</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">The complete path. Includes HTML, CSS, Tailwind CSS, JavaScript, and React components.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <div class="flex items-end gap-1 mb-4">
+                            <span class="text-3xl font-extrabold text-textMain">₱850</span><span class="text-sm font-medium text-textMuted mb-1">/ bundle</span>
+                        </div>
+                        <button class="w-full bg-primary hover:bg-primaryHover text-white py-3 rounded-full font-semibold transition-colors duration-300 shadow-md shadow-blue-200">Enroll in Bundle</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border-2 border-primary/30 rounded-[2rem] p-8 h-full shadow-[0_8px_30px_rgb(14,165,233,0.08)] hover:-translate-y-1.5 transition-all duration-300 relative group overflow-hidden" data-category="bundle back-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-blue-50 text-primary border border-blue-100 px-3 py-1 rounded-full">Full Bundle</span>
+                    <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Back-End Architecture Track</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Includes Java, C#, Python, Rust, and Backend JS. Architect robust server-side systems.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <div class="flex items-end gap-1 mb-4">
+                            <span class="text-3xl font-extrabold text-textMain">₱1,200</span><span class="text-sm font-medium text-textMuted mb-1">/ bundle</span>
+                        </div>
+                        <button class="w-full bg-primary hover:bg-primaryHover text-white py-3 rounded-full font-semibold transition-colors duration-300 shadow-md shadow-blue-200">Enroll in Bundle</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border-2 border-primary/30 rounded-[2rem] p-8 h-full shadow-[0_8px_30px_rgb(14,165,233,0.08)] hover:-translate-y-1.5 transition-all duration-300 relative group overflow-hidden" data-category="bundle design">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-blue-50 text-primary border border-blue-100 px-3 py-1 rounded-full">Full Bundle</span>
+                    <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">UI/UX Design Track</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Includes Figma, Canva, and Interaction Systems. Turn ideas into pixel-perfect mockups.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <div class="flex items-end gap-1 mb-4">
+                            <span class="text-3xl font-extrabold text-textMain">₱500</span><span class="text-sm font-medium text-textMuted mb-1">/ bundle</span>
+                        </div>
+                        <button class="w-full bg-primary hover:bg-primaryHover text-white py-3 rounded-full font-semibold transition-colors duration-300 shadow-md shadow-blue-200">Enroll in Bundle</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border-2 border-primary/30 rounded-[2rem] p-8 h-full shadow-[0_8px_30px_rgb(14,165,233,0.08)] hover:-translate-y-1.5 transition-all duration-300 relative group overflow-hidden" data-category="bundle cybersecurity">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-blue-50 text-primary border border-blue-100 px-3 py-1 rounded-full">Full Bundle</span>
+                    <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Cybersecurity Bootcamp</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Includes Fundamentals, Nmap, Wireshark, and Burp Suite. The ultimate defense training.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <div class="flex items-end gap-1 mb-4">
+                            <span class="text-3xl font-extrabold text-textMain">₱850</span><span class="text-sm font-medium text-textMuted mb-1">/ bundle</span>
+                        </div>
+                        <button class="w-full bg-primary hover:bg-primaryHover text-white py-3 rounded-full font-semibold transition-colors duration-300 shadow-md shadow-blue-200">Enroll in Bundle</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border-2 border-primary/30 rounded-[2rem] p-8 h-full shadow-[0_8px_30px_rgb(14,165,233,0.08)] hover:-translate-y-1.5 transition-all duration-300 relative group overflow-hidden" data-category="bundle ai">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-blue-50 text-primary border border-blue-100 px-3 py-1 rounded-full">Full Bundle</span>
+                    <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">AI & Automation Track</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Includes MCP Fundamentals, N8N, and Workflow Orchestration. Multiply your engineering productivity.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <div class="flex items-end gap-1 mb-4">
+                            <span class="text-3xl font-extrabold text-textMain">₱800</span><span class="text-sm font-medium text-textMuted mb-1">/ bundle</span>
+                        </div>
+                        <button class="w-full bg-primary hover:bg-primaryHover text-white py-3 rounded-full font-semibold transition-colors duration-300 shadow-md shadow-blue-200">Enroll in Bundle</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-orange-400/50 transition-all duration-300 relative group overflow-hidden" data-category="front-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-orange-50 text-orange-500 rounded-2xl flex items-center justify-center mb-6 border border-orange-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">HTML</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Master semantic structure and document architecture.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱200</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-orange-500 hover:bg-orange-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-blue-400/50 transition-all duration-300 relative group overflow-hidden" data-category="front-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center mb-6 border border-blue-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">CSS</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Learn Flexbox, Grid, animations, and advanced responsive styling concepts.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱200</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-blue-500 hover:bg-blue-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-teal-400/50 transition-all duration-300 relative group overflow-hidden" data-category="front-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-teal-50 text-teal-500 rounded-2xl flex items-center justify-center mb-6 border border-teal-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Tailwind CSS</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Stop writing custom CSS. Build beautiful designs rapidly using utility classes.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱200</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-teal-500 hover:bg-teal-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-yellow-400/50 transition-all duration-300 relative group overflow-hidden" data-category="front-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-yellow-50 text-yellow-500 rounded-2xl flex items-center justify-center mb-6 border border-yellow-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">JavaScript</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">ES6+ syntax, closures, asynchronous programming, and advanced DOM manipulation.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱250</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-yellow-400 hover:bg-yellow-400 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-cyan-400/50 transition-all duration-300 relative group overflow-hidden" data-category="front-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-cyan-50 text-cyan-500 rounded-2xl flex items-center justify-center mb-6 border border-cyan-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">React</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Build scalable single-page apps using components, hooks, and advanced state management.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱300</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-cyan-500 hover:bg-cyan-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-red-600/50 transition-all duration-300 relative group overflow-hidden" data-category="back-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6 border border-red-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Java</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Learn enterprise infrastructure, JVM tuning, and Spring Boot architecture.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱300</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-red-600 hover:bg-red-600 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-purple-600/50 transition-all duration-300 relative group overflow-hidden" data-category="back-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-6 border border-purple-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">C#</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Master .NET Core fundamentals, Entity Framework, and secure API development.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱300</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-purple-600 hover:bg-purple-600 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-blue-500/50 transition-all duration-300 relative group overflow-hidden" data-category="back-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 border border-blue-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Python</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Go beyond scripts. Architect robust backends using FastAPI and manage complex data structures.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱300</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-blue-600 hover:bg-blue-600 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-orange-600/50 transition-all duration-300 relative group overflow-hidden" data-category="back-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center mb-6 border border-orange-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Rust</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Master memory safety, fearless concurrency, and ultra-high-performance system programming.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱300</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-orange-600 hover:bg-orange-600 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-yellow-500/50 transition-all duration-300 relative group overflow-hidden" data-category="back-end">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center mb-6 border border-yellow-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">JavaScript (Backend)</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Use Node.js and Express to build scalable APIs and manage real-time server connections.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱250</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-yellow-600 hover:bg-yellow-600 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-pink-500/50 transition-all duration-300 relative group overflow-hidden" data-category="design">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-pink-50 text-pink-500 rounded-2xl flex items-center justify-center mb-6 border border-pink-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Figma</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Master auto-layout, build reusable components, and create high-fidelity interactive prototypes.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱200</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-pink-500 hover:bg-pink-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-indigo-400/50 transition-all duration-300 relative group overflow-hidden" data-category="design">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-500 rounded-2xl flex items-center justify-center mb-6 border border-indigo-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Canva</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Rapid asset creation. Learn layout principles to quickly deploy beautiful marketing materials.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱150</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-indigo-500 hover:bg-indigo-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-cyan-500/50 transition-all duration-300 relative group overflow-hidden" data-category="design">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center mb-6 border border-cyan-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Interaction Systems</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Design cohesive user experiences. Focus on state changes, micro-interactions, and usability rules.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱250</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-cyan-600 hover:bg-cyan-600 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-emerald-500/50 transition-all duration-300 relative group overflow-hidden" data-category="cybersecurity">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 border border-emerald-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Fundamentals</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Understand the core principles of networking, threat models, and basic defensive architectures.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱250</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-emerald-500 hover:bg-emerald-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-green-500/50 transition-all duration-300 relative group overflow-hidden" data-category="cybersecurity">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-green-50 text-green-500 rounded-2xl flex items-center justify-center mb-6 border border-green-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Nmap</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Master network discovery and security auditing. Learn aggressive scanning and vulnerability detection.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱200</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-green-500 hover:bg-green-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-teal-500/50 transition-all duration-300 relative group overflow-hidden" data-category="cybersecurity">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-teal-50 text-teal-500 rounded-2xl flex items-center justify-center mb-6 border border-teal-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Wireshark</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Gain absolute visibility into networks. Learn to capture, filter, and analyze packets to identify breaches.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱200</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-teal-500 hover:bg-teal-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-red-500/50 transition-all duration-300 relative group overflow-hidden" data-category="cybersecurity">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center mb-6 border border-red-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Burp Suite</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">The industry standard for web pentesting. Manipulate traffic, intercept requests, and exploit OWASP flaws.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱350</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-red-500 hover:bg-red-500 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-purple-600/50 transition-all duration-300 relative group overflow-hidden" data-category="ai">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-6 border border-purple-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">MCP Fundamentals</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Integrate tools securely using the Model Context Protocol. Provide deep context to LLM agents.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱300</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-purple-600 hover:bg-purple-600 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-indigo-600/50 transition-all duration-300 relative group overflow-hidden" data-category="ai">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 border border-indigo-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">N8N Automation</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Map logical processes using low-code orchestration. Connect APIs and eliminate manual operations.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱300</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-indigo-600 hover:bg-indigo-600 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-fuchsia-600/50 transition-all duration-300 relative group overflow-hidden" data-category="ai">
+                    <span class="absolute top-6 right-6 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-600 px-3 py-1 rounded-full">Individual</span>
+                    <div class="w-14 h-14 bg-fuchsia-50 text-fuchsia-600 rounded-2xl flex items-center justify-center mb-6 border border-fuchsia-100"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg></div>
+                    <h2 class="text-2xl font-bold text-textMain mb-3 tracking-tight">Workflow Orchestration</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">Design complex, multi-agent AI workflows. Chain models together to execute multi-step engineering tasks.</p>
+                    <div class="mt-auto border-t border-gray-100 pt-6">
+                        <span class="text-3xl font-extrabold text-textMain mb-4 block">₱350</span>
+                        <button class="w-full bg-white border-2 border-gray-200 text-textMain hover:border-fuchsia-600 hover:bg-fuchsia-600 hover:text-white py-3 rounded-full font-semibold transition-colors duration-300">Enroll Now</button>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div id="emptyState" class="hidden text-center py-20">
+                <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="text-xl font-bold text-textMain mb-2">No courses found</h3>
+                <p class="text-textMuted">Try adjusting your search or filter criteria.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                        <span class="font-bold text-xl text-textMain tracking-tight">BuildByte Academy</span>
+                    </div>
+                    <p class="text-sm text-textMuted leading-relaxed pr-4">
+                        The modern standard for elite tech specializations. Empowering students with the actual, direct expertise demanded by scaling global software corporations.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-textMain mb-4">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-textMuted">
+                        <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Courses</a></li>
+                        <li><a href="certificate.html" class="hover:text-primary transition-colors">Verified Certificate</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-textMain mb-4">Specializations</h4>
+                    <ul class="space-y-3 text-sm text-textMuted">
+                        <li><a href="#" class="hover:text-primary transition-colors">Front-End Development</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Back-End Development</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">AI & Automation</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">UI/UX Design</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Cybersecurity</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-textMain mb-4">Stay Updated</h4>
+                    <p class="text-sm text-textMuted mb-4">Join our weekly engineering digests for practical tips, code sandboxes, and curriculum drops.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Enter your email..." class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm text-textMain">
+                        <button type="submit" class="bg-primary hover:bg-primaryHover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors w-24">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-textMuted">© 2026 BuildByte Academy Platforms, Inc. All rights reserved.</p>
+                <div class="flex gap-6 text-xs text-textMuted">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Protocol</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Mobile Menu Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line-1');
+        const line2 = document.getElementById('line-2');
+        const line3 = document.getElementById('line-3');
+        let isMenuOpen = false;
+
+        mobileBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                line1.classList.add('translate-y-[8px]', 'rotate-45', 'text-primary');
+                line2.classList.add('opacity-0', 'scale-0');
+                line3.classList.add('-translate-y-[8px]', '-rotate-45', 'text-primary');
+                mobileMenu.classList.remove('-translate-y-4', 'opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+            } else {
+                line1.classList.remove('translate-y-[8px]', 'rotate-45', 'text-primary');
+                line2.classList.remove('opacity-0', 'scale-0');
+                line3.classList.remove('-translate-y-[8px]', '-rotate-45', 'text-primary');
+                mobileMenu.classList.add('-translate-y-4', 'opacity-0', 'pointer-events-none');
+                mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+            }
+        });
+
+        // 2. Filter & Search Logic
+        const searchInput = document.getElementById('courseSearch');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const courseCards = document.querySelectorAll('.course-card');
+        const emptyState = document.getElementById('emptyState');
+        let currentFilter = 'all';
+
+        function applyFilters() {
+            const searchTerm = searchInput.value.toLowerCase();
+            let visibleCount = 0;
+
+            courseCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const title = card.querySelector('h2').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
+
+                // Check if card matches filter category
+                const matchesFilter = currentFilter === 'all' || category.includes(currentFilter);
+                // Check if card matches search text
+                const matchesSearch = title.includes(searchTerm) || desc.includes(searchTerm);
+
+                if (matchesFilter && matchesSearch) {
+                    card.style.display = 'flex';
+                    // Slight delay for smooth fade in
+                    setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 10);
+                    visibleCount++;
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    // Hide after animation finishes
+                    setTimeout(() => { 
+                        if (card.style.opacity === '0') card.style.display = 'none'; 
+                    }, 300);
+                }
+            });
+
+            // Show empty state if no cards match
+            setTimeout(() => {
+                if (visibleCount === 0) {
+                    emptyState.classList.remove('hidden');
+                } else {
+                    emptyState.classList.add('hidden');
+                }
+            }, 300);
+        }
+
+        // Search Input Event
+        searchInput.addEventListener('input', applyFilters);
+
+        // Filter Button Events
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Reset styling for all buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white');
+                    b.classList.add('bg-white', 'text-textMuted');
+                });
+                
+                // Add active styling to clicked button
+                e.target.classList.remove('bg-white', 'text-textMuted');
+                e.target.classList.add('bg-primary', 'text-white');
+
+                // Update filter and apply
+                currentFilter = e.target.getAttribute('data-filter');
+                applyFilters();
+            });
+        });
+    </script>
+</body>
+</html>

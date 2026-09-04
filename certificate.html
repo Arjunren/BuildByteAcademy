@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Certificate - BuildByte Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#0ea5e9',
+                        primaryHover: '#0284c7',
+                        bgWhite: '#ffffff',
+                        textMain: '#111827',
+                        textMuted: '#4b5563',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
+    </style>
+</head>
+<body class="text-textMain antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
+
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="relative bg-white z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    <span class="font-bold text-xl tracking-tight">BuildByte Academy</span>
+                </a>
+
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-textMuted hover:text-primary font-medium transition-colors">Home</a>
+                    <a href="course.html" class="text-textMuted hover:text-primary font-medium transition-colors">Course</a>
+                    <a href="certificate.html" class="text-primary font-medium transition-colors">Certificate</a>
+                    <a href="contact.html" class="text-textMuted hover:text-primary font-medium transition-colors">Contact Us</a>
+                </div>
+
+                <div class="hidden md:flex items-center">
+                    <a href="#" class="bg-primary hover:bg-primaryHover text-white px-6 py-2.5 rounded-full font-medium transition-colors shadow-sm shadow-blue-200">
+                        Get Started
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 text-textMain focus:outline-none group">
+                        <span id="line-1" class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-in-out origin-center"></span>
+                        <span id="line-2" class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-in-out"></span>
+                        <span id="line-3" class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-in-out origin-center"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-lg transform -translate-y-4 opacity-0 pointer-events-none transition-all duration-300 ease-in-out z-10">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-textMuted hover:text-primary hover:bg-gray-50 transition-colors">Home</a>
+                <a href="course.html" class="block px-3 py-2 rounded-md text-base font-medium text-textMuted hover:text-primary hover:bg-gray-50 transition-colors">Course</a>
+                <a href="certificate.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-blue-50 transition-colors">Certificate</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-textMuted hover:text-primary hover:bg-gray-50 transition-colors">Contact Us</a>
+                <a href="#" class="block px-3 py-3 mt-6 text-center rounded-md text-base font-medium bg-primary text-white hover:bg-primaryHover transition-colors">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow bg-gray-50/30 py-16 lg:py-24 relative overflow-hidden">
+        
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-blue-50/80 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-block text-xs font-bold tracking-wider text-primary uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100 mb-6">
+                    Verification
+                </span>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-textMain mb-6 tracking-tight">Verify Your Certificate</h1>
+                <p class="text-lg text-textMuted leading-relaxed">
+                    Ensure transparency. Search or cryptographically validate the authenticity of any BuildByte Academy certificate instantly.
+                </p>
+            </div>
+
+            <div class="max-w-2xl mx-auto mb-20 relative">
+                <div class="relative flex items-center w-full h-14 rounded-full focus-within:shadow-lg bg-white border border-gray-200 overflow-hidden transition-shadow duration-300">
+                    <div class="grid place-items-center h-full w-12 text-gray-400 pl-2">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <input
+                        class="peer h-full w-full outline-none text-sm text-textMain pr-2 bg-transparent placeholder-gray-400"
+                        type="text"
+                        id="search"
+                        placeholder="Enter certificate ID (e.g. LS-2026-X9A)..." />
+                    <button class="absolute right-1.5 top-1.5 bottom-1.5 bg-primary hover:bg-primaryHover text-white px-6 rounded-full text-sm font-medium transition-colors shadow-sm">
+                        Verify
+                    </button>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white border border-gray-200 rounded-[2rem] p-8 md:p-14 shadow-[0_8px_30px_rgb(14,165,233,0.08)] relative overflow-hidden group">
+                    
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-16">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                            <span class="font-bold text-lg tracking-tight text-textMain">BuildByte Academy</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="text-xs font-bold text-emerald-700 tracking-wide uppercase">Verified Status</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center max-w-2xl mx-auto">
+                        <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-8">Certificate of Completion</h2>
+                        
+                        <p class="text-textMuted mb-2">This is successfully certified that</p>
+                        
+                        <h3 class="text-4xl md:text-5xl font-extrabold text-textMain mb-6">Jonathan V. Hargreaves</h3>
+                        
+                        <p class="text-textMuted leading-relaxed mb-6">
+                            has successfully completed all laboratory exercises, capstone assessments, and code reviews for the professional specialization track:
+                        </p>
+                        
+                        <h4 class="text-xl md:text-2xl font-bold text-primaryHover mb-16">Advanced React & Front-End Architecture</h4>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end border-t border-gray-100 pt-8 mt-4">
+                        
+                        <div class="text-center md:text-left">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Date of Issuance</p>
+                            <p class="font-medium text-sm text-textMain">October 24, 2026</p>
+                        </div>
+                        
+                        <div class="text-center flex flex-col items-center justify-center">
+                            <svg class="w-8 h-8 text-amber-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                            <p class="text-[11px] font-mono font-bold text-amber-600 tracking-wider">LS-SECURE-ID: X9A8B7</p>
+                        </div>
+                        
+                        <div class="text-center md:text-right">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Authorized Signature</p>
+                            <p class="font-bold text-sm text-textMain">A. Rivera, Lead Dev</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                        <span class="font-bold text-xl text-textMain tracking-tight">BuildByte Academy</span>
+                    </div>
+                    <p class="text-sm text-textMuted leading-relaxed pr-4">
+                        The modern standard for elite tech specializations. Empowering students with the actual, direct expertise demanded by scaling global software corporations.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-textMain mb-4">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-textMuted">
+                        <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="course.html" class="hover:text-primary transition-colors">Courses</a></li>
+                        <li><a href="certificate.html" class="hover:text-primary transition-colors">Verified Certificate</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-textMain mb-4">Specializations</h4>
+                    <ul class="space-y-3 text-sm text-textMuted">
+                        <li><a href="course.html" class="hover:text-primary transition-colors">Front-End Development</a></li>
+                        <li><a href="course.html" class="hover:text-primary transition-colors">Back-End Development</a></li>
+                        <li><a href="course.html" class="hover:text-primary transition-colors">AI & Automation</a></li>
+                        <li><a href="course.html" class="hover:text-primary transition-colors">UI/UX Design</a></li>
+                        <li><a href="course.html" class="hover:text-primary transition-colors">Cybersecurity</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-textMain mb-4">Stay Updated</h4>
+                    <p class="text-sm text-textMuted mb-4">Join our weekly engineering digests for practical tips, code sandboxes, and curriculum drops.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Enter your email..." class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm text-textMain">
+                        <button type="submit" class="bg-primary hover:bg-primaryHover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors w-24">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-textMuted">© 2026 BuildByte Academy Platforms, Inc. All rights reserved.</p>
+                <div class="flex gap-6 text-xs text-textMuted">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Protocol</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line-1');
+        const line2 = document.getElementById('line-2');
+        const line3 = document.getElementById('line-3');
+        let isMenuOpen = false;
+
+        mobileBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+
+            if (isMenuOpen) {
+                line1.classList.add('translate-y-[8px]', 'rotate-45', 'text-primary');
+                line2.classList.add('opacity-0', 'scale-0');
+                line3.classList.add('-translate-y-[8px]', '-rotate-45', 'text-primary');
+                mobileMenu.classList.remove('-translate-y-4', 'opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+            } else {
+                line1.classList.remove('translate-y-[8px]', 'rotate-45', 'text-primary');
+                line2.classList.remove('opacity-0', 'scale-0');
+                line3.classList.remove('-translate-y-[8px]', '-rotate-45', 'text-primary');
+                mobileMenu.classList.add('-translate-y-4', 'opacity-0', 'pointer-events-none');
+                mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+            }
+        });
+    </script>
+</body>
+</html>
