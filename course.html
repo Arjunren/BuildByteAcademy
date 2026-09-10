@@ -6,6 +6,7 @@
     <title>Courses & Bundles - BuildByte Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="assets/app.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -563,6 +564,32 @@
                 currentFilter = e.target.getAttribute('data-filter');
                 applyFilters();
             });
+        });
+    </script>
+    <script>
+        // Published courses are owned by the backend; this replaces the former static catalogue.
+        window.addEventListener('load', async () => {
+            const grid = document.getElementById('courseGrid');
+            const empty = document.getElementById('emptyState');
+            const search = document.getElementById('courseSearch');
+            const filters = [...document.querySelectorAll('.filter-btn')];
+            let courses = [], selected = 'all';
+            const render = () => {
+                const term = search.value.toLowerCase().trim();
+                const matches = courses.filter(c => (selected === 'all' || (c.category || '').toLowerCase().includes(selected)) && `${c.title} ${c.description} ${c.teacher?.name || ''}`.toLowerCase().includes(term));
+                grid.innerHTML = matches.map(c => `<article class="course-card flex flex-col bg-white border border-gray-200 rounded-[2rem] p-8 h-full shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300" data-category="${BuildByte.escape(c.category || '')}">
+                    <span class="text-[10px] font-bold uppercase tracking-widest bg-blue-50 text-primary w-fit px-3 py-1 rounded-full">${BuildByte.escape(c.difficulty || 'Course')}</span>
+                    <h2 class="text-2xl font-bold text-textMain mt-6 mb-3 tracking-tight">${BuildByte.escape(c.title)}</h2>
+                    <p class="text-sm text-textMuted mb-6 leading-relaxed flex-grow">${BuildByte.escape(c.short_description || c.description || 'No course description yet.')}</p>
+                    <p class="text-sm text-textMuted mb-5">${BuildByte.escape(c.duration || 'Self paced')} · ${BuildByte.escape(c.teacher?.name || 'BuildByte Academy')}</p>
+                    <button onclick="BuildByte.enroll(${c.id})" class="w-full bg-primary hover:bg-primaryHover text-white py-3 rounded-full font-semibold transition-colors">Enroll now</button>
+                </article>`).join('');
+                empty.classList.toggle('hidden', matches.length > 0);
+            };
+            try { courses = (await BuildByte.request('/courses')).data.courses; render(); }
+            catch (_) { grid.innerHTML = ''; empty.classList.remove('hidden'); empty.querySelector('p').textContent = 'Courses are temporarily unavailable. Please try again later.'; }
+            search.addEventListener('input', render);
+            filters.forEach(button => button.addEventListener('click', () => { selected = button.dataset.filter; render(); }));
         });
     </script>
 </body>
