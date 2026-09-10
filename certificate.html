@@ -101,14 +101,15 @@
                         type="text"
                         id="search"
                         placeholder="Enter certificate ID (e.g. LS-2026-X9A)..." />
-                    <button class="absolute right-1.5 top-1.5 bottom-1.5 bg-primary hover:bg-primaryHover text-white px-6 rounded-full text-sm font-medium transition-colors shadow-sm">
+                    <button id="verifyButton" type="button" class="absolute right-1.5 top-1.5 bottom-1.5 bg-primary hover:bg-primaryHover text-white px-6 rounded-full text-sm font-medium transition-colors shadow-sm">
                         Verify
                     </button>
                 </div>
+                <p id="verificationMessage" class="mt-3 text-center text-sm text-textMuted" role="status">Enter a certificate ID to check its authenticity.</p>
             </div>
 
             <div class="max-w-4xl mx-auto">
-                <div class="bg-white border border-gray-200 rounded-[2rem] p-8 md:p-14 shadow-[0_8px_30px_rgb(14,165,233,0.08)] relative overflow-hidden group">
+                <div id="verificationResult" class="hidden bg-white border border-gray-200 rounded-[2rem] p-8 md:p-14 shadow-[0_8px_30px_rgb(14,165,233,0.08)] relative overflow-hidden group">
                     
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-16">
                         <div class="flex items-center gap-2">
@@ -117,7 +118,7 @@
                         </div>
                         <div class="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full">
                             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span class="text-xs font-bold text-emerald-700 tracking-wide uppercase">Verified Status</span>
+                            <span class="text-xs font-bold text-emerald-700 tracking-wide uppercase">Verification result</span>
                         </div>
                     </div>
 
@@ -126,30 +127,30 @@
                         
                         <p class="text-textMuted mb-2">This is successfully certified that</p>
                         
-                        <h3 class="text-4xl md:text-5xl font-extrabold text-textMain mb-6">Jonathan V. Hargreaves</h3>
+                        <h3 class="text-4xl md:text-5xl font-extrabold text-textMain mb-6">Certificate lookup</h3>
                         
                         <p class="text-textMuted leading-relaxed mb-6">
                             has successfully completed all laboratory exercises, capstone assessments, and code reviews for the professional specialization track:
                         </p>
                         
-                        <h4 class="text-xl md:text-2xl font-bold text-primaryHover mb-16">Advanced React & Front-End Architecture</h4>
+                        <h4 class="text-xl md:text-2xl font-bold text-primaryHover mb-16">Enter an ID above to verify it.</h4>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end border-t border-gray-100 pt-8 mt-4">
                         
                         <div class="text-center md:text-left">
                             <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Date of Issuance</p>
-                            <p class="font-medium text-sm text-textMain">October 24, 2026</p>
+                            <p class="font-medium text-sm text-textMain">—</p>
                         </div>
                         
                         <div class="text-center flex flex-col items-center justify-center">
                             <svg class="w-8 h-8 text-amber-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                            <p class="text-[11px] font-mono font-bold text-amber-600 tracking-wider">LS-SECURE-ID: X9A8B7</p>
+                            <p class="text-[11px] font-mono font-bold text-amber-600 tracking-wider">—</p>
                         </div>
                         
                         <div class="text-center md:text-right">
                             <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Authorized Signature</p>
-                            <p class="font-bold text-sm text-textMain">A. Rivera, Lead Dev</p>
+                            <p class="font-bold text-sm text-textMain">—</p>
                         </div>
 
                     </div>
@@ -212,6 +213,7 @@
         </div>
     </footer>
 
+    <script src="assets/app.js"></script>
     <script>
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -237,6 +239,38 @@
                 mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
             }
         });
+
+        const certificateSearch = document.getElementById('search');
+        const verifyButton = document.getElementById('verifyButton');
+        const result = document.getElementById('verificationResult');
+        const verificationMessage = document.getElementById('verificationMessage');
+
+        function showResult(data) {
+            const escape = BuildByte.escape;
+            const completed = data.completed_at ? new Date(data.completed_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '—';
+            result.innerHTML = `<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-14">
+                <div class="font-bold text-lg">◈ BuildByte Academy</div>
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full"><span class="w-2 h-2 rounded-full bg-emerald-500"></span><span class="text-xs font-bold text-emerald-700 uppercase">Verified certificate</span></div>
+            </div>
+            <div class="text-center max-w-2xl mx-auto"><h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-8">Certificate of Completion</h2><p class="text-textMuted mb-2">This certificate was issued to</p><h3 class="text-4xl md:text-5xl font-extrabold text-textMain mb-6">${escape(data.student)}</h3><p class="text-textMuted mb-3">for successfully completing</p><h4 class="text-xl md:text-2xl font-bold text-primaryHover mb-14">${escape(data.course)}</h4></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end border-t border-gray-100 pt-8"><div class="text-center md:text-left"><p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Completion date</p><p class="font-medium text-sm">${escape(completed)}</p></div><div class="text-center"><p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Certificate ID</p><p class="text-[11px] font-mono font-bold text-amber-600 tracking-wider">${escape(data.certificate_id)}</p></div><div class="text-center md:text-right"><p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Status</p><p class="font-bold text-sm text-emerald-700">Valid</p></div></div>`;
+            result.classList.remove('hidden');
+        }
+        async function verifyCertificate() {
+            const id = certificateSearch.value.trim();
+            if (!id) { verificationMessage.textContent = 'Enter a certificate ID first.'; result.classList.add('hidden'); return; }
+            verifyButton.disabled = true; verifyButton.textContent = 'Checking…'; verificationMessage.textContent = 'Checking the BuildByte certificate registry…'; result.classList.add('hidden');
+            try {
+                const response = await BuildByte.request(`/certificate/verify/${encodeURIComponent(id)}`);
+                if (!response.data.valid) { verificationMessage.textContent = 'No valid certificate was found for that ID.'; return; }
+                verificationMessage.textContent = 'Certificate verified successfully.'; showResult(response.data);
+            } catch (_) { verificationMessage.textContent = 'Certificate verification is temporarily unavailable. Please try again.'; }
+            finally { verifyButton.disabled = false; verifyButton.textContent = 'Verify'; }
+        }
+        verifyButton.addEventListener('click', verifyCertificate);
+        certificateSearch.addEventListener('keydown', event => { if (event.key === 'Enter') verifyCertificate(); });
+        const certificateId = new URLSearchParams(window.location.search).get('id');
+        if (certificateId) { certificateSearch.value = certificateId; verifyCertificate(); }
     </script>
 </body>
 </html>
