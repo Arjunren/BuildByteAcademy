@@ -8,6 +8,7 @@
     <link rel="icon" href="./Icon_Badge.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script>
         tailwind.config = {
             theme: {
@@ -103,62 +104,122 @@
         </div>
     </nav>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8">
-                <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-                    Master the Skills That <br>
-                    <span class="gradient-text">Shape Tomorrow</span>
-                </h1>
-                <p class="text-lg text-textMuted max-w-lg leading-relaxed">
-                    Empower your future with direct access to world-class, professional technical courses. Learn
-                    practical, actionable engineering directly from top specialists.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="course.html"
-                        class="bg-primary hover:bg-primaryHover text-white px-8 py-3.5 rounded-full font-medium transition-colors shadow-lg shadow-blue-200 inline-block">
-                        Explore Courses
-                    </a>
-                    <button
-                        class="flex items-center gap-2 bg-white border border-gray-300 hover:border-gray-400 text-textMain px-8 py-3.5 rounded-full font-medium transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z">
-                            </path>
-                        </svg>
-                        Watch Demo
-                    </button>
-                </div>
+    <section class="relative overflow-hidden bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <!-- Optional: Subtle background decoration -->
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.blue.50),theme(colors.white))] opacity-20"></div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+        <!-- Left Column: Text & CTA -->
+        <div class="max-w-2xl">
+            <!-- Eyebrow Badge -->
+            <div class="mb-6 inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold text-blue-600 ring-1 ring-inset ring-blue-600/20 bg-blue-50/50">
+                🚀 Elevate your tech career
             </div>
-            <div
-                class="relative w-full h-[400px] lg:h-[500px] bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden shadow-xl">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                    alt="Technology Network" class="w-full h-full object-cover opacity-90">
-                <div class="absolute inset-0 bg-blue-500 mix-blend-overlay opacity-20"></div>
+            
+            <h1 class="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+                Master the Skills That <br class="hidden lg:block">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                    Shape Tomorrow
+                </span>
+            </h1>
+            
+            <p class="mt-6 text-lg text-gray-600 leading-relaxed max-w-lg">
+                Empower your future with direct access to world-class, professional technical courses. Learn practical, actionable engineering directly from top specialists.
+            </p>
+            
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <a href="course.html" class="inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-semibold transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-600/40 hover:-translate-y-0.5">
+                    Explore Courses
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+                <button class="inline-flex justify-center items-center gap-2 bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 px-8 py-3.5 rounded-full font-semibold transition-all">
+                    <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path>
+                    </svg>
+                    Enroll Now!!!
+                </button>
             </div>
         </div>
 
-        <div class="mt-20 bg-gray-50 border border-gray-100 rounded-2xl p-8 shadow-sm">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
-                <div>
-                    <h3 class="text-4xl font-bold text-textMain mb-1">10,000+</h3>
-                    <p class="text-textMuted text-sm font-medium">Students Enrolled</p>
-                </div>
-                <div>
-                    <h3 class="text-4xl font-bold text-textMain mb-1">50+</h3>
-                    <p class="text-textMuted text-sm font-medium">Tech Specializations</p>
-                </div>
-                <div>
-                    <h3 class="text-4xl font-bold text-textMain mb-1">5</h3>
-                    <p class="text-textMuted text-sm font-medium">Industry Experts</p>
-                </div>
-                <div>
-                    <h3 class="text-4xl font-bold text-textMain mb-1">98%</h3>
-                    <p class="text-textMuted text-sm font-medium">Satisfaction Rate</p>
-                </div>
+        <!-- Right Column: Image -->
+        <div class="relative mx-auto w-full max-w-lg lg:max-w-none">
+            <!-- Decorative background blob behind the image -->
+            <div class="absolute -top-4 -right-4 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+            <div class="absolute -bottom-8 -left-4 w-72 h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+            
+            <div class="relative w-full h-[400px] lg:h-[520px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-900/10">
+                <img 
+                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                    alt="Technology Network" 
+                    class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                >
+                <!-- Improved overlay gradient instead of a flat color -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/40 to-transparent mix-blend-multiply"></div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Recognized By / Logo Carousel Section -->
+<div class="mt-20 lg:mt-32">
+    <p class="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">
+        Recognized & trusted by industry leaders
+    </p>
+    
+    <div class="bg-white rounded-3xl py-8 px-4 sm:px-10 shadow-xl shadow-gray-200/50 ring-1 ring-gray-100 overflow-hidden">
+        
+        <!-- Swiper Container -->
+        <div class="swiper logo-swiper flex items-center h-16">
+            <div class="swiper-wrapper items-center">
+                
+                <!-- NVIDIA -->
+                <div class="swiper-slide flex justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg" 
+                         alt="Nvidia" 
+                         class="h-6 md:h-8 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                </div>
+
+                <!-- Microsoft -->
+                <div class="swiper-slide flex justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" 
+                         alt="Microsoft" 
+                         class="h-7 md:h-9 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                </div>
+
+                <!-- Apple -->
+                <div class="swiper-slide flex justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
+                         alt="Apple" 
+                         class="h-8 md:h-10 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                </div>
+
+                <!-- Google -->
+                <div class="swiper-slide flex justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" 
+                         alt="Google" 
+                         class="h-7 md:h-9 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                </div>
+
+                <!-- Amazon -->
+                <div class="swiper-slide flex justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" 
+                         alt="Amazon" 
+                         class="h-7 md:h-9 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mt-2">
+                </div>
+
+                <!-- Meta -->
+                <div class="swiper-slide flex justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" 
+                         alt="Meta" 
+                         class="h-5 md:h-7 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</section>
 
     <section class="bg-gray-50 py-20 border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -785,6 +846,40 @@
             }
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    // Initialize the continuous marquee Swiper
+    document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper('.logo-swiper', {
+            slidesPerView: 2,         // Show 2 logos on mobile
+            spaceBetween: 30,
+            loop: true,               // Infinite loop
+            speed: 3000,              // Speed of the continuous scroll
+            autoplay: {
+                delay: 0,             // No delay between transitions
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 3, // Show 3 logos on tablets
+                    spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 5, // Show 5 logos on desktop
+                    spaceBetween: 50,
+                },
+            }
+        });
+    });
+</script>
+
+<style>
+    /* Required to make the Swiper scroll smoothly without stopping */
+    .logo-swiper .swiper-wrapper {
+        transition-timing-function: linear !important;
+    }
+</style>
 </body>
 
 </html>
