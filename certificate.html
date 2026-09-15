@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify Certificate - BuildByte Academy</title>
-    <link rel="icon" href="./Icon_Badge.png">
+    <link rel="icon" type="image/png" href="./Icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
         rel="stylesheet">
     <script>
         tailwind.config = {
@@ -17,6 +17,7 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
+                        signature: ['Caveat', 'cursive'],
                     },
                     colors: {
                         primary: '#0ea5e9',
@@ -49,13 +50,10 @@
                 </a>
 
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html"
-                        class="text-textMuted hover:text-primary font-medium transition-colors">Home</a>
-                    <a href="course.html"
-                        class="text-textMuted hover:text-primary font-medium transition-colors">Course</a>
+                    <a href="index.html" class="text-textMuted hover:text-primary font-medium transition-colors">Home</a>
+                    <a href="course.html" class="text-textMuted hover:text-primary font-medium transition-colors">Course</a>
                     <a href="certificate.html" class="text-primary font-medium transition-colors">Certificate</a>
-                    <a href="contact.html"
-                        class="text-textMuted hover:text-primary font-medium transition-colors">Contact Us</a>
+                    <a href="contact.html" class="text-textMuted hover:text-primary font-medium transition-colors">Contact Us</a>
                 </div>
 
                 <div class="hidden md:flex items-center">
@@ -119,7 +117,7 @@
             </div>
 
             <div class="max-w-2xl mx-auto mb-20 relative">
-                <!-- Converted to form for better accessibility and Enter-key submission -->
+                <!-- Search Form -->
                 <form id="verifyForm"
                     class="relative flex items-center w-full h-14 rounded-full focus-within:shadow-lg focus-within:ring-2 focus-within:ring-primary/30 bg-white border border-gray-200 overflow-hidden transition-all duration-300">
                     <div class="grid place-items-center h-full w-12 text-gray-400 pl-2">
@@ -128,8 +126,7 @@
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>
-                    <input
-                        class="peer h-full w-full outline-none text-sm text-textMain pr-2 bg-transparent placeholder-gray-400"
+                    <input class="peer h-full w-full outline-none text-sm text-textMain pr-2 bg-transparent placeholder-gray-400"
                         type="text" id="search" aria-label="Certificate ID"
                         placeholder="Enter certificate ID (e.g. LS-2026-X9A)..." />
                     <button id="verifyButton" type="submit"
@@ -141,42 +138,77 @@
                     certificate ID to check its authenticity.</p>
             </div>
 
-            <div class="max-w-4xl mx-auto">
+            <!-- Certificate Display Box -->
+            <div class="max-w-5xl mx-auto">
                 <div id="verificationResult"
-                    class="hidden bg-white border border-gray-200 rounded-[2rem] p-8 md:p-14 shadow-[0_8px_30px_rgb(14,165,233,0.08)] relative overflow-hidden group">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-16">
-                        <div class="flex items-center gap-2">
-                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
-                                </path>
-                            </svg>
-                            <span class="font-bold text-lg tracking-tight text-textMain">BuildByte Academy</span>
+                    class="bg-white border border-gray-200 rounded-[2rem] p-8 md:p-14 shadow-[0_8px_30px_rgb(14,165,233,0.08)] relative overflow-hidden group">
+                    
+                    <!-- Faint Watermark Logo in Background -->
+                    <img src="./Icon.png" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 object-contain opacity-[0.03] pointer-events-none" alt="">
+
+                    <!-- Certificate Header with Company Info -->
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-16 relative z-10">
+                        <!-- Company PFP and Name -->
+                        <div class="flex items-center gap-3">
+                            <img src="./Icon.png" alt="BuildByte Academy Logo" class="w-12 h-12 object-contain bg-white rounded-lg p-1 shadow-sm border border-gray-100">
+                            <span class="font-bold text-2xl tracking-tight text-textMain">BuildByte Academy</span>
                         </div>
-                        <div
-                            class="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span class="text-xs font-bold text-emerald-700 tracking-wide uppercase">Verification
-                                result</span>
+                        <!-- Status Badge -->
+                        <div id="certBadge" class="flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.6)]"></span>
+                            <span class="text-xs font-bold text-blue-700 tracking-wide uppercase">Active Certificate</span>
                         </div>
                     </div>
 
-                    <div class="text-center max-w-2xl mx-auto">
+                    <!-- Certificate Body -->
+                    <div class="text-center max-w-2xl mx-auto relative z-10 mb-16">
                         <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-8">Certificate of
                             Completion</h2>
                         <p class="text-textMuted mb-2">This is successfully certified that</p>
-                        <h3 class="text-4xl md:text-5xl font-extrabold text-textMain mb-6">Certificate lookup</h3>
+                        <h3 id="certName" class="text-4xl md:text-5xl font-extrabold text-textMain mb-6">Jarek Melgar</h3>
                         <p class="text-textMuted leading-relaxed mb-6">
                             has successfully completed all laboratory exercises, capstone assessments, and code reviews
-                            for the professional specialization track.
+                            for the professional specialization track in:
                         </p>
-                        <h4 class="text-xl md:text-2xl font-bold text-primaryHover mb-16">Enter an ID above to verify
-                            it.</h4>
+                        <h4 id="certCourse" class="text-xl md:text-2xl font-bold text-primaryHover">Advanced Software Architecture</h4>
                     </div>
-                    <p class="text-sm text-textMuted leading-relaxed pr-4 border-t border-gray-100 pt-8">
-                        The modern standard for elite tech specializations. Empowering students with the actual, direct
-                        expertise demanded by scaling global software corporations.
-                    </p>
+
+                    <!-- Certificate Footer Metadata & Signatures -->
+                    <div class="flex flex-col md:flex-row justify-between items-end border-t border-gray-100 pt-10 relative z-10 gap-10">
+                        
+                        <!-- Left Info -->
+                        <div class="flex gap-x-12 gap-y-6">
+                            <div>
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Issue Date</p>
+                                <p id="certDate" class="font-medium text-sm text-textMain">September 16, 2026</p>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Certificate ID</p>
+                                <p id="certId" class="text-xs font-mono font-bold text-amber-600 tracking-wider">SAMPLE-2026-X9A</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Signature & QR Code -->
+                        <div class="flex flex-col sm:flex-row items-end gap-10">
+                            
+                            <!-- Signature Block -->
+                            <div class="text-center pb-2">
+                                <div class="w-48 h-[1px] bg-gray-300 mx-auto mb-2"></div>
+                                <p class="text-[12px] text-black uppercase tracking-wider font-medium">Arjunren Von</p>
+                                <p class="text-[10px] text-primary uppercase tracking-wider font-medium">Software Engineer</p>
+                            </div>
+
+                            <!-- QR Code Block -->
+                            <div class="flex flex-col items-center gap-2">
+                                <a href="https://buildbyte.academy/certificate.html?id=SAMPLE-2026-X9A" target="_blank" id="qrLink" 
+                                   class="block p-2.5 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/30 transition-all">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://buildbyte.academy/certificate.html?id=SAMPLE-2026-X9A" 
+                                         alt="Verify QR Code" class="w-16 h-16 opacity-90" id="qrImage">
+                                </a>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Scan to Verify</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -188,11 +220,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <div class="space-y-4">
                     <div class="flex items-center gap-2">
-                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
-                            </path>
-                        </svg>
+                        <img src="./Icon.png" alt="BuildByte Academy" class="w-6 h-6 object-contain">
                         <span class="font-bold text-xl text-textMain tracking-tight">BuildByte Academy</span>
                     </div>
                     <p class="text-sm text-textMuted leading-relaxed pr-4">
@@ -225,7 +253,6 @@
                     </ul>
                 </div>
 
-                <!-- Modernized Newsletter Section -->
                 <div>
                     <h4 class="font-bold text-textMain mb-4">Join our Newsletter</h4>
                     <p class="text-sm text-textMuted mb-5">Get weekly engineering digests, code sandboxes, and
@@ -312,45 +339,33 @@
         const verifyForm = document.getElementById('verifyForm');
         const certificateSearch = document.getElementById('search');
         const verifyButton = document.getElementById('verifyButton');
-        const result = document.getElementById('verificationResult');
         const verificationMessage = document.getElementById('verificationMessage');
 
         function showResult(data) {
-            // Note: Make sure BuildByte.escape is defined in your assets/app.js
             const escape = typeof BuildByte !== 'undefined' ? BuildByte.escape : (str) => str;
-
             const completed = data.completed_at ? new Date(data.completed_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '—';
+            
+            const certIdValue = escape(data.certificate_id);
+            const domain = window.location.origin || 'https://buildbyte.academy';
+            const verificationUrl = `${domain}/certificate.html?id=${certIdValue}`;
 
-            result.innerHTML = `
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-14">
-                <div class="font-bold text-lg">◈ BuildByte Academy</div>
-                <div class="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                    <span class="text-xs font-bold text-emerald-700 uppercase">Verified certificate</span>
-                </div>
-            </div>
-            <div class="text-center max-w-2xl mx-auto">
-                <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-8">Certificate of Completion</h2>
-                <p class="text-textMuted mb-2">This certificate was issued to</p>
-                <h3 class="text-4xl md:text-5xl font-extrabold text-textMain mb-6">${escape(data.student)}</h3>
-                <p class="text-textMuted mb-3">for successfully completing</p>
-                <h4 class="text-xl md:text-2xl font-bold text-primaryHover mb-14">${escape(data.course)}</h4>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end border-t border-gray-100 pt-8">
-                <div class="text-center md:text-left">
-                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Completion date</p>
-                    <p class="font-medium text-sm">${escape(completed)}</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Certificate ID</p>
-                    <p class="text-[11px] font-mono font-bold text-amber-600 tracking-wider">${escape(data.certificate_id)}</p>
-                </div>
-                <div class="text-center md:text-right">
-                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Status</p>
-                    <p class="font-bold text-sm text-emerald-700">Valid</p>
-                </div>
-            </div>`;
-            result.classList.remove('hidden');
+            // Update the text in the certificate template
+            document.getElementById('certName').textContent = escape(data.student);
+            document.getElementById('certCourse').textContent = escape(data.course);
+            document.getElementById('certDate').textContent = escape(completed);
+            document.getElementById('certId').textContent = certIdValue;
+
+            // Update QR Code dynamically
+            document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(verificationUrl)}`;
+            document.getElementById('qrLink').href = verificationUrl;
+            
+            // Update the Top Badge
+            const badge = document.getElementById('certBadge');
+            badge.className = 'flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full';
+            badge.innerHTML = `
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.6)]"></span>
+                <span class="text-xs font-bold text-emerald-700 tracking-wide uppercase">Verified Certificate</span>
+            `;
         }
 
         async function verifyCertificate(event) {
@@ -359,14 +374,12 @@
             const id = certificateSearch.value.trim();
             if (!id) {
                 verificationMessage.textContent = 'Enter a certificate ID first.';
-                result.classList.add('hidden');
                 return;
             }
 
             verifyButton.disabled = true;
             verifyButton.textContent = 'Checking…';
             verificationMessage.textContent = 'Checking the BuildByte certificate registry…';
-            result.classList.add('hidden');
 
             try {
                 // Relies on BuildByte object from assets/app.js
